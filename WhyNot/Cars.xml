@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Cars>
+	<Car>
+		<Id>1</Id>
+		<Make>Toyota</Make>
+		<Model>Corolla</Model>
+		<Year>2021</Year>
+	</Car>
+	<Car>
+		<Id>2</Id>
+		<Make>Ford</Make>
+		<Model>Mustang</Model>
+		<Year>2020</Year>
+	</Car>
+	<Car>
+		<Id>3</Id>
+		<Make>Tesla</Make>
+		<Model>Model S</Model>
+		<Year>2022</Year>
+	</Car>
+</Cars>

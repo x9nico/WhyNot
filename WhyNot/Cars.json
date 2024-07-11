@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 1,
+    "Make": "Toyota",
+    "Model": "Corolla",
+    "Year": 2021
+  },
+  {
+    "Id": 2,
+    "Make": "Ford",
+    "Model": "Mustang",
+    "Year": 2020
+  },
+  {
+    "Id": 3,
+    "Make": "Tesla",
+    "Model": "Model S",
+    "Year": 2022
+  }
+]

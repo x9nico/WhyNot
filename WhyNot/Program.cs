@@ -1,4 +1,5 @@
-﻿var manager = new DataManager();
+﻿
+/*var manager = new DataManager();
 var carsFromJson = manager.LoadJson(@"JsonData.json");
 var carsFromXml = manager.LoadXml(@"XmlData.xml");
 
@@ -9,7 +10,11 @@ var sortedCars = carsFromJson.OrderBy(car => car.Year).ToList();
 var recentCars = carsFromJson.Where(car => car.Year > 2010).ToList();
 
 // Sauvegarder les données JSON transformées en XML
-manager.SaveDataAsXml(sortedCars, @"SortedCars.xml");
+manager.SaveDataAsXml(sortedCars, @"SortedCars.xml");*/
+
+FileManager.GenerateJson();
+
+Console.ReadLine();
 
 public class Car
 {
@@ -18,4 +23,7 @@ public class Car
     public string Model { get; set; }
     public int Year { get; set; }
 }
+
+
+
 
