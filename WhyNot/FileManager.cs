@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Data.Entity;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
@@ -7,6 +9,8 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Data.Entity;
 using Newtonsoft.Json.Linq;
+using WhyNot.Migrations;
+using WhyNot;
 
 
 public class DataManager
@@ -45,12 +49,15 @@ public class DataManager
         xDocument.Save(filePath);
     }
 
-    public void GenerateJson () {
-        JObject json = new JObject(
+    public void GenerateJson()
+    {
+        using (var db = new CarContext())
+        {
+            JObject json = new JObject(
             new JProperty("data",
             new JObject("item",
             new JArray(
-                from voiture in car
+                from voiture in db.Cars
                 orderby voiture.Model
                 select new JObject(
                     new JProperty("model", voiture.Model)
@@ -59,5 +66,8 @@ public class DataManager
             )
             )
         );
+        }
     }
+            
+  }
 
