@@ -1,6 +1,15 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿var manager = new DataManager();
+var carsFromJson = manager.LoadJson(@"JsonData.json");
+var carsFromXml = manager.LoadXml(@"XmlData.xml");
 
+// Exemple de tri des voitures par année
+var sortedCars = carsFromJson.OrderBy(car => car.Year).ToList();
+
+// Exemple de filtrage des voitures par année
+var recentCars = carsFromJson.Where(car => car.Year > 2010).ToList();
+
+// Sauvegarder les données JSON transformées en XML
+manager.SaveDataAsXml(sortedCars, @"SortedCars.xml");
 public class Car
 {
     public int carId {  get; set; }
@@ -8,3 +17,4 @@ public class Car
     public string Model { get; set; }
     public int Year { get; set; }
 }
+
