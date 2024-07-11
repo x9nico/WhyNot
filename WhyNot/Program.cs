@@ -13,6 +13,8 @@ var recentCars = carsFromJson.Where(car => car.Year > 2010).ToList();
 manager.SaveDataAsXml(sortedCars, @"SortedCars.xml");*/
 
 FileManager.GenerateJson();
+//FileManager.JsonQuery.QueryJson();
+FileManager.XmlQuery.QueryXml();
 
 Console.ReadLine();
 

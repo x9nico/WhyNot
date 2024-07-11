@@ -84,7 +84,58 @@ public class FileManager
             Console.WriteLine(json.ToString());
         }
     }
+    public class JsonQuery
+    {
+        public static void QueryJson()
+        {
+            // Utilisation de AppDomain.CurrentDomain.BaseDirectory pour obtenir le dossier de l'application
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string jsonFilePath = Path.Combine(basePath, "Cars.json"); // Chemin relatif au dossier de l'exécution
+            string jsonContent = File.ReadAllText(jsonFilePath);
+            JArray carsArray = JArray.Parse(jsonContent);
 
+            var queryResults = from car in carsArray
+                               where (int)car["Year"] > 2015
+                               orderby car["Model"]
+                               select new
+                               {
+                                   Model = car["Model"],
+                                   Make = car["Make"]
+                               };
 
+            foreach (var car in queryResults)
+            {
+                Console.WriteLine($"Model: {car.Model}, Make: {car.Make}");
+            }
+        }
+
+    }
+    public class XmlQuery
+    {
+        public static void QueryXml()
+        {
+            // Chemin relatif par rapport à l'emplacement d'exécution de l'application
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string xmlFilePath = Path.Combine(basePath, "..\\..\\..\\Cars.xml"); // Ajustez ce chemin selon la structure de votre projet
+            string xmlContent = File.ReadAllText(xmlFilePath);
+
+            XElement carsElement = XElement.Parse(xmlContent);
+
+            var queryResults = from car in carsElement.Elements("Car")
+                               where (int)car.Element("Year") > 2015
+                               orderby car.Element("Model").Value
+                               select new
+                               {
+                                   Model = car.Element("Model").Value,
+                                   Make = car.Element("Make").Value
+                               };
+
+            foreach (var car in queryResults)
+            {
+                Console.WriteLine($"Model: {car.Model}, Make: {car.Make}");
+            }
+
+        }
+    }
 }
 
